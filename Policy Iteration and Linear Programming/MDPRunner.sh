@@ -1,13 +1,11 @@
 #!/bin/bash
 
 # Howards pi
-
 mdpdir=$1
-
 mkdir HPIResults
 for i in {1..100}
 do
-   cmd="./planner.sh --mdp mdpdir/MDP$i.txt --algorithm hpi"
+   cmd="./planner.sh --mdp $mdpdir/MDP$i.txt --algorithm hpi"
    $cmd > "HPIResults/sol$i.txt"
    echo cmd
 done
@@ -17,7 +15,7 @@ done
 mkdir RPIResults
 for i in {1..100}
 do
-   cmd="./planner.sh --mdp mdpdir/MDP$i.txt --algorithm rpi --randomseed $i"
+   cmd="./planner.sh --mdp $mdpdir/MDP$i.txt --algorithm rpi --randomseed $i"
    $cmd > "RPIResults/sol$i.txt"
 done
 
@@ -28,7 +26,7 @@ do
 	mkdir BSPIResults_"$j"
 	for i in {1..100}
 	do
-	   cmd="./planner.sh --mdp mdpdir/MDP$i.txt --algorithm bspi --batchsize $j"
+	   cmd="./planner.sh --mdp $mdpdir/MDP$i.txt --algorithm bspi --batchsize $j"
 	   $cmd > "BSPIResults_50/sol$i.txt"
 	done
 done
